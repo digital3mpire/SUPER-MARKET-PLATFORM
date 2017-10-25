@@ -1,0 +1,76 @@
+/* general styling */
+
+body {
+	/*background: url(../00_pics/super-information-high-market.jpg);*/
+	background-repeat:no-repeat;
+	background-size:cover;
+	background-attachment: fixed;
+}
+
+h1,h2 {
+	font-family: 'Bangers', cursive;
+	text-shadow: 0 0 0.1em #fff, 0 0 0.2em #fff, 0 0 0.3em #fff, 0 0 0.4em #f7f,0 0 0.6em #f0f, 0 0 0.8em #f0f, 0 0 1.0em #f0f, 0 0 1.2em #f0f;
+	/*text-align: center;*/
+}
+
+h3,h4,h5,h6 {
+	font-family: 'Bangers', cursive;
+
+}
+
+.material-icons {
+	font-size: 32px;
+	line-height: 1.25;
+}
+
+a {
+	color: #3d3d3d;
+}
+
+/* navigation */
+
+.nav-container {
+	padding: 1rem;
+	background-color: #fff;
+	/*opacity: 0.9;*/
+	background-color:rgba(255, 255, 255, 0.8);
+	margin-top: 1rem;
+	border-radius: 25px;
+}
+
+.nav-container .row {
+	margin-bottom: 0;
+}
+
+.col.nav-container-menu-box {
+	padding-top: 5px;
+}
+
+/* content */
+
+.content-container {
+	background-color:rgba(255, 255, 255, 0.9);
+	font-family: 'Droid Serif', serif;
+	font-size: 18px;
+	border-radius: 25px;
+}
+
+.content-container article {
+	margin: 1rem;
+	padding-top: 3rem;
+	padding-bottom: 3rem;
+}
+
+.content-container__listbox {
+	margin-bottom:3rem;
+}
+
+.content-container__listbox img {
+	width:100%;
+}
+
+.content-container__listbox-tools .material-icons {
+	font-size: 22px;
+	line-height: 1.25;
+	padding-left:5px;
+}
