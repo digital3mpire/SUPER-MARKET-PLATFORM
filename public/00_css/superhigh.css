@@ -1,15 +1,21 @@
 /* general styling */
 
 body {
-	/*background: url(../00_pics/super-information-high-market.jpg);*/
+	background: url(../00_pics/super-information-high-market.jpg);
 	background-repeat:no-repeat;
 	background-size:cover;
 	background-attachment: fixed;
 }
 
-h1,h2 {
+h1 {
 	font-family: 'Bangers', cursive;
 	text-shadow: 0 0 0.1em #fff, 0 0 0.2em #fff, 0 0 0.3em #fff, 0 0 0.4em #f7f,0 0 0.6em #f0f, 0 0 0.8em #f0f, 0 0 1.0em #f0f, 0 0 1.2em #f0f;
+	/*text-align: center;*/
+}
+
+h2 {
+	font-family: 'Bangers', cursive;
+	text-shadow: 0 0 0.1em #fff, 0 0 0.2em #fff, 0 0 0.3em #80ff8e, 0 0 0.4em #eeff33,0 0 0.6em #39ff44, 0 0 0.8em #f5f, 0 0 1.0em #f5f, 0 0 1.2em #f5f;
 	/*text-align: center;*/
 }
 
@@ -35,7 +41,12 @@ a {
 	/*opacity: 0.9;*/
 	background-color:rgba(255, 255, 255, 0.8);
 	margin-top: 1rem;
-	border-radius: 25px;
+	border-radius: 10px 10px 0 0;
+}
+
+.nav-container h4 {
+	margin:0;
+	color:red;
 }
 
 .nav-container .row {
@@ -48,17 +59,27 @@ a {
 
 /* content */
 
+.superhead {
+
+	margin-left: 5%;
+
+}
+
 .content-container {
 	background-color:rgba(255, 255, 255, 0.9);
 	font-family: 'Droid Serif', serif;
 	font-size: 18px;
-	border-radius: 25px;
+	border-radius: 0 0 10px 10px;
 }
 
 .content-container article {
 	margin: 1rem;
 	padding-top: 3rem;
 	padding-bottom: 3rem;
+}
+
+.content-container article a {
+text-decoration: underline;
 }
 
 .content-container__listbox {
@@ -73,4 +94,48 @@ a {
 	font-size: 22px;
 	line-height: 1.25;
 	padding-left:5px;
+}
+
+/* content overlay */
+
+.show-super-product {
+	cursor: pointer;
+}
+
+.contentoverlay {
+	position: fixed;
+	background: #000;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 0%;
+	opacity: 0;
+	visibility: hidden;
+	-webkit-transition: opacity .35s, visibility .35s, height .35s;
+	transition: opacity .35s, visibility .35s, height .35s;
+	overflow: hidden;
+}
+.contentoverlay.open {
+	opacity: .9;
+	visibility: visible;
+	height: 100%;
+	z-index: 10;
+}
+.contentoverlay.open li {
+	-webkit-animation: fadeInRight .5s ease forwards;
+	animation: fadeInRight .5s ease forwards;
+	-webkit-animation-delay: .35s;
+	animation-delay: .35s;
+}
+.contentoverlay.open li:nth-of-type(2) {
+	-webkit-animation-delay: .4s;
+	animation-delay: .4s;
+}
+.contentoverlay.open li:nth-of-type(3) {
+	-webkit-animation-delay: .45s;
+	animation-delay: .45s;
+}
+.contentoverlay.open li:nth-of-type(4) {
+	-webkit-animation-delay: .50s;
+	animation-delay: .50s;
 }

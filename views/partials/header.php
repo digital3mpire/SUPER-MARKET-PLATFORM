@@ -28,6 +28,16 @@
                     $(this).toggleClass('active');
                     $('#overlay').toggleClass('open');
                 });
+
+                $('.show-super-product').click(function() {
+                    $(this).toggleClass('active');
+                    $('.contentoverlay').toggleClass('open');
+                });
+                $('.contentoverlay').click(function() {
+                    $(this).toggleClass('active');
+                    $('.contentoverlay').toggleClass('open');
+                });
+
             })
         })(jQuery)
     </script>

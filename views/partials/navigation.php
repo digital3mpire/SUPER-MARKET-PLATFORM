@@ -2,12 +2,13 @@
     <nav class="overlay-menu">
         <ul>
             <li><a href="/" class="menue-link">HOME</a></li>
-            <li><a href="/Entity" class="menue-link">Overview</a></li>
-            <li><a href="/Cart/index" class="menue-link">Your Shoppingcart</a></li>
-            <li><a href="/Checkout" class="menue-link">Checkout</a></li>
+            <li><a href="/Entity" class="menue-link">Products overview</a></li>
+            <li><a href="/Brands" class="menue-link">Available brands</a></li>
+            <li><a href="/Supershop/Cart" class="menue-link">Your Shoppingcart</a></li>
+            <li><a href="/Supershop/Checkout" class="menue-link">Checkout</a></li>
             <!-- <li><a href="/Welcome/about" class="menue-link">About</a></li>-->
-<hr>
-            <li><a href="http://thewrong.org" class="menue-link">THE WRONG</a></li>
+
+            <li><p><a href="http://thewrong.org" class="menue-link">THE WRONG</a></p></li>
         </ul>
     </nav>
 </div>
@@ -24,12 +25,13 @@
             <!-- <i class="material-icons" id="toggle">menu</i>-->
         </div>
         <div class="col s6">
-            inout text
+<h4>THIS IS BETA - VERSION 0.84</h4>
         </div>
         <div class="col s2 right-align">
 
             <i class="material-icons">show_chart</i>
-            <i class="material-icons">shopping_cart</i>
+            <a href="/Supershop/Cart" class="menue-link"> <i class="material-icons">shopping_cart</i></a>
+
             <!-- menu ende -->
         </div>
     </div>

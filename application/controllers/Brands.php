@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Entity extends CI_Controller {
+class Brands extends CI_Controller {
     /**
      * Entity constructor.
      */
@@ -19,6 +19,7 @@ class Entity extends CI_Controller {
             // Do not use cookie, cart data will lost when browser is closed
             'useCookie'	=> false,
         ];
+        $this->load->helper('directory');
 
         $this->load->library('supercart',$params);
         //$this->load->library('superentity');
@@ -49,10 +50,21 @@ class Entity extends CI_Controller {
         $this->load->model('superentity');
 
         $data['allentities'] = $this->superentity->getArtworks();
-        $this->load->view('listentity',$data);
+        $this->load->view('listbrands',$data);
     }
 
 
+    public function addtocart()
+    {
+
+        $get_array = $this->uri->uri_to_assoc(3);
+        $this->supercart->add($get_array['id']);
+
+
+        redirect('Entity/index', 'refresh');
+
+
+    }
 
 
 }

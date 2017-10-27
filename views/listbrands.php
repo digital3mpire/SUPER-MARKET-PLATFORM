@@ -4,18 +4,19 @@
 <body>
 
 <?php $this->load->view('partials/navigation.php');?>
-<h1 class="superhead">CHECKOUT</h1>
-<h3 class="superhead">PAY WITH ATTENTION</h3>
+
+<h1 class="superhead">OUR FREEMIUM ART BRANDS <br>- WATCH OUT 4 UPDATES</h1>
+
 <div class="container content-container">
     <article>
-        <div class="row">
-
+        <div class="row content-container__list">
             <div class="col s12">
-                <h5>Supercheckout and Share</h5>
-                <p>this is the checkout. here you can pay your superproduct collcetion with a share on social and antisocial medias</p>
-                <p>More soon. THIS IS BETA. :-)</p>
-            </div>
+            <?php foreach ($allentities as $entity) {
 
+                echo "<h2 class='center-align'>".$entity->getArtistname()."</h2>";
+
+            }?>
+            </div>
         </div>
     </article>
 </div>

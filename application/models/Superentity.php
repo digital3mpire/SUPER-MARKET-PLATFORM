@@ -14,10 +14,11 @@ class Superentity extends CI_Model
 
     private $assetstructure = array();
 
-
     private $assetnames = array();
 
     private $artistnames = array();
+
+    private $artworks = array();
 
 
 
@@ -25,27 +26,47 @@ class Superentity extends CI_Model
     public function __construct()
     {
 
+        $this->load->helper('file');
         $this->load->model('entity/artwork','entity_artwork');
-        $this->assetstructure = directory_map('../assets/SUPER-INFORMATION-HIGH-MARKET');
+        $this->assetstructure = directory_map(BASEPATH.'../public/assets/SUPER-INFORMATION-HIGH-MARKET');
 
-        var_dump($this->assetstructure);
+        foreach($this->assetstructure as $key1 => $value1 ) {
 
+            if (is_array($value1)) {
 
-        $i=0;
-        foreach($this->assetstructure as $key => $value ) {
+                foreach($value1 as $key2 => $value2) {
 
-            if (is_array($value)) {
-                $artworks[$i] = new Artwork();
+                    $assetid = $this->generateAssetId($key1,$key2);
 
-                $artworks[$i]->setArtistName(ucwords($this->transformName($key)));
+                    $this->artworks[$assetid] = new Artwork();
 
+                    $this->artworks[$assetid]->setAssetid($assetid);
+                    $this->artworks[$assetid]->setTitle(ucwords($this->transformName($key2)));
+                    $this->artworks[$assetid]->setArtistname(ucwords($this->transformName($key1)));
 
-                echo "<br>".$artworks[$i]->getArtistname();
-                $i++;
+                    $this->artworks[$assetid]->setThumbnail($key1.$key2."_meta/400x400_thumbnail.jpg");
+                    $this->artworks[$assetid]->setLinktocontent("xxx");
 
+                }
             }
-
         }
+    }
+
+
+    /**
+     * @return array
+     */
+    public function getArtworks()
+    {
+        return $this->artworks;
+    }
+
+    /**
+     * @param array $artworks
+     */
+    public function setArtworks($artworks)
+    {
+        $this->artworks = $artworks;
     }
 
 
@@ -124,6 +145,11 @@ class Superentity extends CI_Model
 
     }
 
+    private function generateAssetId($name,$artwork) {
+
+        return str_replace('/','',$name)."_".str_replace('/','',$artwork);
+
+    }
 
     private function transformName($dirname) {
 

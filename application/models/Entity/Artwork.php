@@ -10,9 +10,14 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 
-class Artwork extends CI_Model
+class Artwork extends ArrayObject
 {
-    private $name;
+
+    private $assetid;
+
+
+
+    private $title;
 
     private $artistname;
 
@@ -28,6 +33,24 @@ class Artwork extends CI_Model
         parent::__construct();
         // Your own constructor code
     }
+
+    /**
+     * @return mixed
+     */
+    public function getAssetid()
+    {
+        return $this->assetid;
+    }
+
+    /**
+     * @param mixed $assetid
+     */
+    public function setAssetid($assetid)
+    {
+        $this->assetid = $assetid;
+    }
+
+
 
     /**
      * @return mixed
@@ -64,17 +87,17 @@ class Artwork extends CI_Model
     /**
      * @return mixed
      */
-    public function getName()
+    public function getTitle()
     {
-        return $this->name;
+        return $this->title;
     }
 
     /**
      * @param mixed $name
      */
-    public function setName($name)
+    public function setTitle($title)
     {
-        $this->name = $name;
+        $this->title = $title;
     }
 
     /**
@@ -106,6 +129,21 @@ class Artwork extends CI_Model
      */
     public function setThumbnail($thumbnail)
     {
+
+        try {
+            if (!file_exists(BASEPATH.'../public/assets/SUPER-INFORMATION-HIGH-MARKET/'.$thumbnail)) {
+
+                $thumbnail = base_url()."00_pics/burningmoney_".rand(1,4).".jpg";
+
+            } else {
+
+                $thumbnail = base_url().'assets/SUPER-INFORMATION-HIGH-MARKET/'.$thumbnail;
+
+            }
+        } catch (Exception $e) {
+            // Handle exception
+        }
+
         $this->thumbnail = $thumbnail;
     }
 
