@@ -10,7 +10,7 @@
 		<article>
 			<div class="row">
 
-		      <div class="col s6">
+		      <div class="col m6 s12">
 		      	<h3>NARRATIVE</h3>
 
 					<p>The superinformation high market is the market in its maximum and final stage.
@@ -36,7 +36,7 @@
 					git-based super structure, in the next step selected and surveyd via webinterfaces and then in a final step shared,
 					spread and distributed into the social networks and hypermedia by the people to the people.</p>
 				</div>
-				<div class="col s6">
+				<div class="col m6 s12">
 					<h3>DEEEP STRUCTURE<br>
 					- How this shit works</h4>
 					<ul class="collection">

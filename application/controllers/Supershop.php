@@ -4,6 +4,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Supershop extends CI_Controller {
 
 
+	private $data;
+
 	/**
 	 * Entity constructor.
 	 */
@@ -11,6 +13,8 @@ class Supershop extends CI_Controller {
 	{
 
 		parent::__construct();// you have missed this line.
+
+		$this->load->library('session');
 		$params = [
 			// Can add unlimited number of item to cart
 			'cartMaxItem' => 0,
@@ -22,6 +26,10 @@ class Supershop extends CI_Controller {
 			'useCookie' => false,
 		];
 		$this->load->library('supercart', $params);
+
+		$this->data['cartitems'] = $this->supercart->getItems();
+		$this->data['allentities'] = $this->superentity->getArtworks();
+		$this->data['status'] = "save";
 
 	}
 
@@ -49,13 +57,7 @@ class Supershop extends CI_Controller {
 	public function cart()
 	{
 
-		$this->load->model('superentity');
-		$data['allentities'] = $this->superentity->getArtworks();
-
-		// Get all items in the cart
-		$data['cartitems'] = $this->supercart->getItems();
-
-		$this->load->view('showcart',$data);
+		$this->load->view('showcart',$this->data);
 	}
 
 	public function addtocart()
@@ -65,7 +67,7 @@ class Supershop extends CI_Controller {
 		$this->supercart->add($get_array['id']);
 
 
-		redirect('Entity/index', 'refresh');
+		redirect('Supershop/listentity', 'refresh');
 
 
 	}
@@ -78,16 +80,99 @@ class Supershop extends CI_Controller {
 		$this->supercart->remove($get_array['id']);
 
 
-		redirect('Entity/index', 'refresh');
+		redirect('Supershop/listentity', 'refresh');
 
 
 	}
 
-
-
-	public function Checkout()
+	public function listentity()
 	{
-		$this->load->view('checkout');
+		// Get all items in the cart
+
+		$this->load->view('listentity',$this->data);
+
+	}
+
+	public function checkout()
+	{
+
+		$this->load->helper('form');
+
+
+		$this->load->view('checkout',$this->data);
+
+	}
+
+
+	public function checkout_step1() {
+
+		$this->load->helper('form');
+		$this->load->library('form_validation');
+
+		/* validate */
+		$this->form_validation->set_rules('username', 'Username', 'required');
+		$this->form_validation->set_rules('useremail', 'Email', 'required|valid_email',
+			array('required' => 'You must provide a %s.')
+		);
+		$this->form_validation->set_rules('collection_title', 'Collection title', 'required');
+
+
+		if ($this->form_validation->run() == FALSE)
+		{
+
+			$formdata = $this->input->post(NULL, TRUE); // returns all POST items with XSS filter
+
+			$this->load->view('checkout',$this->data);
+
+		}
+		else
+		{
+
+			$formdata = $this->input->post(NULL, TRUE); // returns all POST items with XSS filter
+			$this->session->set_userdata($formdata);
+			$this->data['formdata'] = $formdata;
+			$this->load->view('checkout_pay',$this->data);
+
+		}
+
+
+// var_dump($formdata);die();
+
+	}
+
+	public function checkout_confirm()
+	{
+
+		$this->load->helper('form');
+
+		$this->load->library('form_validation');
+
+		/* validate */
+		$this->form_validation->set_rules('username', 'Username', 'required');
+		$this->form_validation->set_rules('useremail', 'Email', 'required|valid_email',
+			array('required' => 'You must provide a %s.')
+		);
+		$this->form_validation->set_rules('collection_title', 'Collection title', 'required');
+
+		if ($this->form_validation->run() == FALSE)
+		{
+
+			$c = $this->input->post(NULL, TRUE); // returns all POST items with XSS filter
+			var_dump($c);
+			$this->load->view('checkout',$this->data);
+
+		}
+		else
+		{
+
+
+			$postdata = $this->input->post(NULL, TRUE); // returns all POST items with XSS filter
+			$this->superentity->saveCollection($postdata, $this->supercart->getItems());
+
+			$this->load->view('checkout_success',$this->data);
+		}
+
+
 	}
 
 

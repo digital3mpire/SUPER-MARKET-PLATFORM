@@ -2,10 +2,10 @@
     <nav class="overlay-menu">
         <ul>
             <li><a href="/" class="menue-link">HOME</a></li>
-            <li><a href="/Entity" class="menue-link">Products overview</a></li>
+            <li><a href="/Supershop/listentity" class="menue-link">Products overview</a></li>
             <li><a href="/Brands" class="menue-link">Available brands</a></li>
-            <li><a href="/Supershop/Cart" class="menue-link">Your Shoppingcart</a></li>
-            <li><a href="/Supershop/Checkout" class="menue-link">Checkout</a></li>
+            <li><a href="/Supershop/cart" class="menue-link">Your Shoppingcart</a></li>
+            <li><a href="/Supershop/checkout" class="menue-link">Checkout</a></li>
             <!-- <li><a href="/Welcome/about" class="menue-link">About</a></li>-->
 
             <li><p><a href="http://thewrong.org" class="menue-link">THE WRONG</a></p></li>
@@ -15,7 +15,7 @@
 
 <div class="container nav-container">
     <div class="row">
-        <div class="col s4 nav-container-menu-box">
+        <div class="col s2 m2 nav-container-menu-box">
             <!-- menue -->
             <div class="button_container" id="toggle">
                 <span class="top"></span>
@@ -27,10 +27,10 @@
         <div class="col s6">
 <h4>THIS IS BETA - VERSION 0.84</h4>
         </div>
-        <div class="col s2 right-align">
+        <div class="col s4 right-align">
 
-            <i class="material-icons">show_chart</i>
             <a href="/Supershop/Cart" class="menue-link"> <i class="material-icons">shopping_cart</i></a>
+            <a href="/Supershop/Checkout" class="menue-link"> <i class="material-icons">share</i></a>
 
             <!-- menu ende -->
         </div>
