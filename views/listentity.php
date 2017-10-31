@@ -2,9 +2,9 @@
 <html lang="en">
 <?php $this->load->view('partials/header.php');?>
 <body>
-<div class="contentoverlay" id="contentoverlay">
+<!-- <div class="contentoverlay" id="contentoverlay">
 <iframe src="https://github.com/digital3mpire/SUPER-INFORMATION-HIGH-MARKET"></iframe>
-</div>
+</div>-->
 <?php $this->load->view('partials/navigation.php');?>
 
 <h1 class="superhead">A MARKET AFTER THE MARKET ON STEROIDS</h1>
@@ -37,7 +37,7 @@
                     echo "<a href=\"/Supershop/addtocart/id/".$entity->getAssetid()."\"><i class=\"material-icons\">add_shopping_cart</i></a>";
                 }
 
-                echo "<i class=\"material-icons show-super-product\">queue</i>";
+                //echo "<i class=\"material-icons show-super-product\">queue</i>";
                 echo "</div>";
                 echo "</div>";
 
