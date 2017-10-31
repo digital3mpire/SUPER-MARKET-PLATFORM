@@ -6,6 +6,7 @@
             <li><a href="/Brands" class="menue-link">Available brands</a></li>
             <li><a href="/Supershop/cart" class="menue-link">Your Shoppingcart</a></li>
             <li><a href="/Supershop/checkout" class="menue-link">Checkout</a></li>
+            <li><a href="/Supershop/collections" class="menue-link">Collections</a></li>
             <!-- <li><a href="/Welcome/about" class="menue-link">About</a></li>-->
 
             <li><p><a href="http://thewrong.org" class="menue-link">THE WRONG</a></p></li>

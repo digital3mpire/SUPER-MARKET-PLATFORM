@@ -18,11 +18,11 @@
                 echo "<div class=\"col s12 m6 l3 content-container__listbox\">";
                 echo "<h5>".$entity->getTitle()."</h5>";
                 if (array_key_exists($entity->getAssetid(),$cartitems)) {
-                    echo "<a href='https://github.com/digital3mpire/SUPER-INFORMATION-HIGH-MARKET/tree/master/'>
+                    echo "<a href='https://github.com/digital3mpire/SUPER-INFORMATION-HIGH-MARKET/tree/master/".$entity->getLinktocontent()."'>
                         <img src=\"".$entity->getThumbnail()."\" alt=\"name\" class=\"selected\" title=\"THE WRONG X\">
                         </a>";
                 } else {
-                    echo "<a href='https://github.com/digital3mpire/SUPER-INFORMATION-HIGH-MARKET/tree/master/'>
+                    echo "<a href='https://github.com/digital3mpire/SUPER-INFORMATION-HIGH-MARKET/tree/master/".$entity->getLinktocontent()."'>
                         <img src=\"".$entity->getThumbnail()."\" alt=\"name\" title=\"THE WRONG X\">
                         </a>";
                 }

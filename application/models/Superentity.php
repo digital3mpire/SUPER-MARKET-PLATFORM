@@ -23,6 +23,7 @@ class Superentity extends CI_Model
 
 
 
+
     public function __construct()
     {
 
@@ -36,16 +37,21 @@ class Superentity extends CI_Model
 
                 foreach($value1 as $key2 => $value2) {
 
-                    $assetid = $this->generateAssetId($key1,$key2);
+                    if (is_array($value2)) {
 
-                    $this->artworks[$assetid] = new Artwork();
 
-                    $this->artworks[$assetid]->setAssetid($assetid);
-                    $this->artworks[$assetid]->setTitle(ucwords($this->transformName($key2)));
-                    $this->artworks[$assetid]->setArtistname(ucwords($this->transformName($key1)));
+                        $assetid = $this->generateAssetId($key1,$key2);
 
-                    $this->artworks[$assetid]->setThumbnail($key1.$key2."_meta/400x400_thumbnail.jpg");
-                    $this->artworks[$assetid]->setLinktocontent("xxx");
+                        $this->artworks[$assetid] = new Artwork();
+
+                        $this->artworks[$assetid]->setAssetid($assetid);
+                        $this->artworks[$assetid]->setTitle(ucwords($this->transformName($key2)));
+                        $this->artworks[$assetid]->setArtistname(ucwords($this->transformName($key1)));
+
+                        $this->artworks[$assetid]->setThumbnail($key1.$key2."_meta/400x400_thumbnail.jpg");
+                        $this->artworks[$assetid]->setLinktocontent($key1.$key2);
+
+                    }
 
                 }
             }
@@ -75,7 +81,6 @@ class Superentity extends CI_Model
 
 
     }
-
 
 
 
@@ -226,7 +231,7 @@ class Superentity extends CI_Model
         $collection->setThecollection('the collection');
         $collection->setComment($postdata['comment']);
 
-        $collection->save();
+        return $collection->save();
 
     }
 

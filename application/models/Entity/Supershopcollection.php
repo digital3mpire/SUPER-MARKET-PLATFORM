@@ -30,55 +30,46 @@ class Supershopcollection extends ArrayObject {
      * Supershopcollection constructor.
      * @param $thecollection
      */
-    public function __construct()
+    public function __construct($id = null)
     {
 
         $this->db = new SQLite3(APPPATH."/database/supershop_DB");
 
-        $this->db-> exec("CREATE TABLE IF NOT EXISTS superproduct_collection(
-                        id INTEGER PRIMARY KEY AUTOINCREMENT,
-                        collection_title TEXT NOT NULL DEFAULT '0',
-                        username TEXT NOT NULL DEFAULT '0',
-                        useremail TEXT NOT NULL DEFAULT '0',
-                        comment TEXT NULL DEFAULT '0',
-                        thecollection TEXT NULL DEFAULT '0',
-                        payedwith TEXT NOT NULL DEFAULT '0'
-                        )");
+        if ($id != NULL) {
 
+            $collection = $this->db->exec("Select * from superproduct_collection where id =".$id);
+            var_dump($collection);
+
+        }
 
     }
 
 
     public function save() {
 
-
         $username = $this->getUsername();
         $useremail = $this->getUseremail();
         $comment = $this->getComment();
         $collectiontitle = $this->getCollectionTitle();
-        $paywithfb = '0';
-        $paywithtwitter = '0';
 
-        echo $sql = "INSERT INTO superproduct_collection (
+        $sql = "INSERT INTO superproduct_collection (
                username,
                useremail,
                comment,
                collection_title,
                thecollection,
-               paywithfb,
-               paywithtwitter
+               payedwith
                ) VALUES (
                '".$username."',
                '".$useremail."',
                '".$comment."',
                '".$collectiontitle."',
                'the collection of things',
-               '".$paywithfb."',
-               '".$paywithtwitter."')
+               'notpayed')
                ";
 
        $this->db->exec($sql);
-       echo $lstrack = $this->db->lastInsertRowid();
+       return $this->db->lastInsertRowid();
 
     }
 

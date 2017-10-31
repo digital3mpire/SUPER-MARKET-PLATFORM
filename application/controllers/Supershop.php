@@ -33,21 +33,7 @@ class Supershop extends CI_Controller {
 
 	}
 
-	/**
-	 * Index Page for this controller.
-	 *
-	 * Maps to the following URL
-	 * 		http://example.com/index.php/welcome
-	 *	- or -
-	 * 		http://example.com/index.php/welcome/index
-	 *	- or -
-	 * Since this controller is set as the default controller in
-	 * config/routes.php, it's displayed at http://example.com/
-	 *
-	 * So any other public methods not prefixed with an underscore will
-	 * map to /index.php/welcome/<method_name>
-	 * @see https://codeigniter.com/user_guide/general/urls.html
-	 */
+
 	public function index()
 	{
 		$this->load->view('index');
@@ -124,56 +110,41 @@ class Supershop extends CI_Controller {
 
 			$this->load->view('checkout',$this->data);
 
-		}
-		else
-		{
+		} else {
 
 			$formdata = $this->input->post(NULL, TRUE); // returns all POST items with XSS filter
+
 			$this->session->set_userdata($formdata);
+			$this->data['collection_id'] = $this->superentity->saveCollection($formdata, $this->supercart->getItems());
+
 			$this->data['formdata'] = $formdata;
-			$this->load->view('checkout_pay',$this->data);
-
-		}
-
-
-// var_dump($formdata);die();
-
-	}
-
-	public function checkout_confirm()
-	{
-
-		$this->load->helper('form');
-
-		$this->load->library('form_validation');
-
-		/* validate */
-		$this->form_validation->set_rules('username', 'Username', 'required');
-		$this->form_validation->set_rules('useremail', 'Email', 'required|valid_email',
-			array('required' => 'You must provide a %s.')
-		);
-		$this->form_validation->set_rules('collection_title', 'Collection title', 'required');
-
-		if ($this->form_validation->run() == FALSE)
-		{
-
-			$c = $this->input->post(NULL, TRUE); // returns all POST items with XSS filter
-			var_dump($c);
-			$this->load->view('checkout',$this->data);
-
-		}
-		else
-		{
-
-
-			$postdata = $this->input->post(NULL, TRUE); // returns all POST items with XSS filter
-			$this->superentity->saveCollection($postdata, $this->supercart->getItems());
-
 			$this->load->view('checkout_success',$this->data);
+
 		}
+
+	}
+
+
+
+	public function create_database_X() {
+
+		$this->db = new SQLite3(APPPATH."/database/supershop_DB");
+
+		$this->db-> exec("CREATE TABLE IF NOT EXISTS superproduct_collection(
+                        id INTEGER PRIMARY KEY AUTOINCREMENT,
+                        collection_title TEXT NOT NULL DEFAULT '0',
+                        username TEXT NOT NULL DEFAULT '0',
+                        useremail TEXT NOT NULL DEFAULT '0',
+                        comment TEXT NULL DEFAULT '0',
+                        thecollection TEXT NULL DEFAULT '0',
+                        payedwith TEXT NOT NULL DEFAULT '0'
+                        )");
 
 
 	}
+
+
+
 
 
 }

@@ -41,10 +41,13 @@
             </div>
             <?php echo form_open('Supershop/checkout_step1', 'class="checkout_confirm" id="checkout_confirm"');
             echo form_hidden('status', $status);
+            echo form_hidden('paynow', 'not_payed');
             ?>
-
                 <div class="col input-field s8">
-
+                    <input type="text" name="collection_title" value="<?php echo set_value('collection_title'); ?>" size="50" class="form-input"/>
+                    <label for="collection_title">What is the title of the collection?</label>
+                </div>
+                <div class="col input-field s8">
                     <input type="text" name="username" value="<?php echo set_value('username'); ?>" size="50" class="form-input"/>
                     <label for="username">Whats your name?</label>
                 </div>
@@ -52,15 +55,12 @@
                     <input type="text" name="useremail" value="<?php echo set_value('useremail'); ?>" size="50" class="form-input"/>
                     <label for="email">Whats your E-Mail?</label>
                 </div>
-                <div class="col input-field s8">
-                    <input type="text" name="collection_title" value="<?php echo set_value('collection_title'); ?>" size="50" class="form-input"/>
-                    <label for="collection_title">What is the title of the collection?</label>
-                </div>
+
                 <div class="col input-field s8">
                         <textarea name="comment" cols="40" rows="10"  class="materialize-textarea form-input"/><?php echo set_value('collection_title'); ?></textarea>
                         <label for="comment">Please feel free to leave a comment on your selection</label>
                 </div>
-                <div class="col s8">
+                <!-- <div class="col s8">
                     <h5>Pay with a share or a tweet</h5>
 
 
@@ -74,7 +74,7 @@
                         <label for="pay_fb">Facebook Share</label>
                     </p>
 
-                </div>
+                </div>-->
                 <div class="col input-field s8">
                    <p> <?php echo form_submit('checkout_collection', 'Checkout',array('class'=>'btn waves-effect waves-light')); ?></p>
                 </div>
