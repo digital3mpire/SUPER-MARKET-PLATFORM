@@ -79,6 +79,18 @@ class Supershop extends CI_Controller {
 
 	}
 
+	public function collections() {
+
+		$db = new SQLite3(APPPATH."/database/supershop_DB");
+		$sql = "SELECT * FROM superproduct_collection";
+
+		$this->data['collections'] = $db->query("SELECT * FROM superproduct_collection");
+
+		$this->load->view('collections',$this->data);
+
+	}
+
+
 	public function checkout()
 	{
 

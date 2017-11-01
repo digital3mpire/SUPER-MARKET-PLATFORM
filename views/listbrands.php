@@ -11,10 +11,15 @@
     <article>
         <div class="row content-container__list">
             <div class="col s12">
-            <?php foreach ($allentities as $entity) {
+            <?php
 
-                echo "<h2 class='center-align'>".$entity->getArtistname()."</h2>";
+            $store = array();
+            foreach ($allentities as $entity) {
+                if (!in_array($entity->getArtistname(),$store)) {
+                    echo "<h2 class='center-align'>".$entity->getArtistname()."</h2>";
 
+                }
+                $store[] = $entity->getArtistname();
             }?>
             </div>
         </div>

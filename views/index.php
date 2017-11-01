@@ -11,6 +11,7 @@
 			<div class="row">
 
 		      <div class="col m6 s12">
+				  <img src="<?php echo base_url('00_pics/TW2_logo.png'); ?>">
 		      	<h3>NARRATIVE</h3>
 
 					<p>The superinformation high market is the market in its maximum and final stage.

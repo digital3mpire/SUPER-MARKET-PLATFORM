@@ -49,6 +49,8 @@ class Brands extends CI_Controller {
 
         $this->load->model('superentity');
 
+
+
         $data['allentities'] = $this->superentity->getArtworks();
         $this->load->view('listbrands',$data);
     }
