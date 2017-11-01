@@ -171,10 +171,45 @@ text-decoration: underline;
 }
 
 
+/* footer */
+
+.footer-container {
+	margin-top: 5rem;
+	margin-bottom: 3rem;
+	background-color:rgba(255, 255, 255, 0.9);
+	font-family: 'Droid Serif', serif;
+	font-size: 18px;
+	border-radius: 10px 10px 10px 10px;
+	padding-bottom: 1rem;
+}
+
+.footercell {
+	height:200px;
+	padding: 2rem;
+}
+
+.footercellheader h5{
+	padding: 2rem 0 0 2rem;
+}
+
+.footercell img {
+
+	padding: 2rem;
+	vertical-align: middle;
+}
+
+
 /* Smartphones (portrait and landscape) ----------- */
 @media only screen and (min-device-width : 320px) and (max-device-width : 640px) {
 	/* Styles */
 	html {
 		font-size: 11px;
 	}
+
+	.nav-container h4 {
+		font-size: 1.5rem;
+		line-height: 100%;
+		margin: 0;
+	}
+
 }

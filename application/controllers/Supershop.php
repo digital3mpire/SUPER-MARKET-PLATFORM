@@ -90,6 +90,12 @@ class Supershop extends CI_Controller {
 
 	}
 
+public function collection() {
+
+	$this->load->view('collection',$this->data);
+
+}
+
 
 	public function checkout()
 	{

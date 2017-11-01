@@ -16,7 +16,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="col s6">
+            <div class="col m8 s12">
                 <p>
                     <?php
 

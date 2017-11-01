@@ -217,3 +217,21 @@
     left: 0;
   }
 }
+
+
+
+/* Smartphones (portrait and landscape) ----------- */
+@media only screen and (min-device-width : 320px) and (max-device-width : 640px) {
+  .overlay ul li {
+    padding-bottom: 0.5rem;
+    min-height: 20px;
+    position: relative;
+    opacity: 0;
+    display: inline-block;
+    float: none;
+    padding-left: 5%;
+    padding-right: 5%;
+    line-height: 1rem;
+  }
+
+}
