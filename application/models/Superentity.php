@@ -33,29 +33,31 @@ class Superentity extends CI_Model
 
         foreach($this->assetstructure as $key1 => $value1 ) {
 
-            if (is_array($value1)) {
+            if ($key1 != "name_prename/") {
 
-                foreach($value1 as $key2 => $value2) {
+                if (is_array($value1)) {
 
-                    if (is_array($value2)) {
+                    foreach($value1 as $key2 => $value2) {
 
+                        if (is_array($value2)) {
 
-                        $assetid = $this->generateAssetId($key1,$key2);
+                            $assetid = $this->generateAssetId($key1,$key2);
 
-                        $this->artworks[$assetid] = new Artwork();
+                            $this->artworks[$assetid] = new Artwork();
 
-                        $this->artworks[$assetid]->setAssetid($assetid);
-                        $this->artworks[$assetid]->setTitle(ucwords($this->transformName($key2)));
-                        $this->artworks[$assetid]->setArtistname(ucwords($this->transformName($key1)));
+                            $this->artworks[$assetid]->setAssetid($assetid);
+                            $this->artworks[$assetid]->setTitle(ucwords($this->transformName($key2)));
+                            $this->artworks[$assetid]->setArtistname(ucwords($this->transformName($key1)));
 
-                        $this->artworks[$assetid]->setThumbnail($key1.$key2."_meta/400x400_thumbnail.jpg");
-                        $this->artworks[$assetid]->setLinktocontent($key1.$key2);
+                            $this->artworks[$assetid]->setThumbnail($key1.$key2."_meta/400x400_thumbnail.jpg");
+                            $this->artworks[$assetid]->setLinktocontent($key1.$key2);
 
-                    }
+                        } // if
 
-                }
-            }
-        }
+                    } // foreach
+                } // if
+            } // if
+        } // foreach
 
 
 

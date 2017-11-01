@@ -11,7 +11,8 @@
 			<div class="row">
 
 		      <div class="col m6 s12">
-				  <img src="<?php echo base_url('00_pics/TW2_logo.png'); ?>">
+				  <h3>A Pavillon for the</h3>
+				  <a href="http://thewrong.org/Super-Information-High-Market"><img class="responsive-img" src="<?php echo base_url('00_pics/TW2_logo.png'); ?>"></a>
 		      	<h3>NARRATIVE</h3>
 
 					<p>The superinformation high market is the market in its maximum and final stage.
@@ -39,27 +40,35 @@
 				</div>
 				<div class="col m6 s12">
 					<h3>DEEEP STRUCTURE<br>
-					- How this shit works</h4>
+					- How this works for producers</h3>
 					<ul class="collection">
 						<li class="collection-item">
-							<h5>1. Order: Intrude <i class="material-icons">publish</i></h5>
-							<p>Artis commit artwork (audio, video, text, pics) to <a href="https://github.com/digital3mpire/SUPER-INFORMATION-HIGH-MARKET">the repo on github</a>. Possibilites: pull request, ask for access to repo</p>
+							<h5>1. Order: Intrude by publish</h5>
+							<p>Artis commit artwork (audio, video, text, pics) to the repo on github</a>.
+								<br>Possibilites are: pull request, or please contact <a href="http://twitter.com/fkuhlmann">me for getting access to repo</p>
 						</li>
 						<li class="collection-item">
-							<h5>2. Order: Escalation mode <i class="material-icons">merge_type</i></h5>
-							<p>after short review new stuff will be merged into the repo</p>
+							<h5>2. Order: Escalate</h5>
+							<p>after review and perhaps discussion new stuff will be merged into the repo</p>
 						</li>
 						<li class="collection-item">
-							<h5>3. Order: View on <i class="material-icons">people</i></h5>
-							<p>Artwork will be available and part of the collection and part of THE WRONG now</p>
+							<h5>3. Order: Display</h5>
+							<p>Artwork will be <li><a href="/Supershop/listentity">available under product lists</a> and part of THE WRONG now</p>
+						</li>
+					</ul>
+						<h3>How this works for the audience</h3>
+					<ul class="collection">
+						<li class="collection-item">
+							<h5>1. Order: Wathc and select</h5>
+							<p>Browse to the inventory. Jump to the github soucrces. Discover, enjoy and if you are interested just download the repo.</p>
 						</li>
 						<li class="collection-item">
-							<h5>4. Order: Super Power Publishing <i class="material-icons">announcement</i></h5>
-							<p>A User puts artworks in the shopping cart. Goes to checkout and spreads the shoppingcart collections via socialmedia.</p>
+							<h5>2. Order: Super Power Publishing</h5>
+							<p>If you like stuff put it in your shopping cart and save your collection for later sharing by checkout.</p>
 						</li>
 						<li class="collection-item">
-							<h5>5. Order: Spread <i class="material-icons">child_care</i></h5>
-							<p>New Users see the collection in their consciuos stream and smile.</p>
+							<h5>3. Order: Spread and share</h5>
+							<p>Share your collection on the internet and give your personal selection of the artworks some more clicks.</p>
 						</li>
 					</ul>
       			</div>

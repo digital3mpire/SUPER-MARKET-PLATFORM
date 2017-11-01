@@ -5,8 +5,8 @@
 
 <?php $this->load->view('partials/navigation.php');?>
 
-<h1 class="superhead">OUR FREEMIUM ART BRANDS <br>- WATCH OUT 4 UPDATES</h1>
-
+<h1 class="superhead">OUR FREEMIUM ART BRANDS - WATCH OUT 4 UPDATES</h1>
+<h2 class="superhead">We offer best products from finest netart brands</h2>
 <div class="container content-container">
     <article>
         <div class="row content-container__list">
@@ -16,6 +16,7 @@
             $store = array();
             foreach ($allentities as $entity) {
                 if (!in_array($entity->getArtistname(),$store)) {
+
                     echo "<h2 class='center-align'>".$entity->getArtistname()."</h2>";
 
                 }

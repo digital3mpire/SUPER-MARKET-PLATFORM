@@ -26,7 +26,7 @@
             <!-- <i class="material-icons" id="toggle">menu</i>-->
         </div>
         <div class="col s6">
-<h4>THIS IS BETA - VERSION 0.84</h4>
+<h4>THIS IS BETA - VERSION 0.96</h4>
         </div>
         <div class="col s4 right-align">
 
