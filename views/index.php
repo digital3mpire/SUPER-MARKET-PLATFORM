@@ -44,7 +44,7 @@
 					<ul class="collection">
 						<li class="collection-item">
 							<h5>1. Order: Intrude by publish</h5>
-							<p>Artis commit artwork (audio, video, text, pics) to the repo on github</a>.
+							<p>Artis commit artwork (audio, video, text, pics) to the repo on github</a>. Please be aware of the <a href="https://github.com/digital3mpire/SUPER-INFORMATION-HIGH-MARKET/tree/master/name_prename">structure</a> which is necessary to make the algorithms work to include github stuff into this frontend.
 								<br>Possibilites are: pull request, or please contact <a href="http://twitter.com/fkuhlmann">me for getting access to repo</p>
 						</li>
 						<li class="collection-item">

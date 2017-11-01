@@ -25,10 +25,10 @@
             </div>
             <!-- <i class="material-icons" id="toggle">menu</i>-->
         </div>
-        <div class="col s6">
-<h4>THIS IS BETA - VERSION 0.96</h4>
+        <div class="col s8">
+            <h4>THIS IS BETA - VERSION 0.96 - * Please report bugs <a href="https://github.com/digital3mpire/SUPER-MARKET-PLATFORM">here</a></h4>
         </div>
-        <div class="col s4 right-align">
+        <div class="col s2 right-align">
 
             <a href="/Supershop/Cart" class="menue-link"> <i class="material-icons">shopping_cart</i></a>
             <a href="/Supershop/Checkout" class="menue-link"> <i class="material-icons">share</i></a>
