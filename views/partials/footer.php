@@ -9,7 +9,7 @@
 <div class="container footer-container">
     <div class="row footer">
         <div class="col s12 footercellheader">
-            <h5>Powered by:</h5>
+            <h4>This pavillon is powered by:</h4>
         </div>
         <div class="col s4 footercell">
             <a href="http://thewrong.org/Super-Information-High-Market">

@@ -49,18 +49,18 @@
 						</li>
 						<li class="collection-item">
 							<h5>2. Order: Escalate</h5>
-							<p>after review and perhaps discussion new stuff will be merged into the repo</p>
+							<p>After review and perhaps discussion new stuff will be merged into the repo</p>
 						</li>
 						<li class="collection-item">
 							<h5>3. Order: Display</h5>
-							<p>Artwork will be <li><a href="/Supershop/listentity">available under product lists</a> and part of THE WRONG now</p>
+							<p>Artwork will be <a href="/Supershop/listentity">available under product lists</a> and part of THE WRONG now</p>
 						</li>
 					</ul>
 						<h3>How this works for the audience</h3>
 					<ul class="collection">
 						<li class="collection-item">
 							<h5>1. Order: Wathc and select</h5>
-							<p>Browse to the inventory. Jump to the github soucrces. Discover, enjoy and if you are interested just download the repo.</p>
+							<p>Browse to the inventory. Jump to the github sources. Discover, enjoy and if you are interested just download the repo.</p>
 						</li>
 						<li class="collection-item">
 							<h5>2. Order: Super Power Publishing</h5>
