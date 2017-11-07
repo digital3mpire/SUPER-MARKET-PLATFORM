@@ -25,6 +25,7 @@
                         foreach ($cartitems as $itemkey => $itemvalue) {
 
                             $entity = $allentities[$itemkey];
+                            echo $itemkey;
                             echo $entity->getArtistname()." <i>'".$entity->getTitle()."'</i>, ";
 
                         }
@@ -51,11 +52,6 @@
                     <input type="text" name="username" value="<?php echo set_value('username'); ?>" size="50" class="form-input"/>
                     <label for="username">Whats your name?</label>
                 </div>
-                <div class="col input-field s8">
-                    <input type="text" name="useremail" value="<?php echo set_value('useremail'); ?>" size="50" class="form-input"/>
-                    <label for="email">Whats your E-Mail?</label>
-                </div>
-
                 <div class="col input-field s8">
                         <textarea name="comment" cols="40" rows="10"  class="materialize-textarea form-input"/><?php echo set_value('collection_title'); ?></textarea>
                         <label for="comment">Please feel free to leave a comment on your selection</label>

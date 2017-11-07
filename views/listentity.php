@@ -13,27 +13,29 @@
     <article>
         <div class="row content-container__list">
 
-            <?php foreach ($allentities as $entity) {
+            <?php
+
+            foreach ($allentities as $entity) {
 
                 echo "<div class=\"col s6 m6 l3 content-container__listbox\">";
                 echo "<div class=\"content-container__listbox-tools right-align\">";
                     if (array_key_exists($entity->getAssetid(),$cartitems)) {
-                        echo "<a href=\"/Supershop/removefromcart/id/".$entity->getAssetid()."\"><i class=\"material-icons\">remove_shopping_cart</i></a>";
+                        echo "<a href=\"/Supershoppingcart/removefromcart/id/".$entity->getAssetid()."\"><i class=\"material-icons\">remove_shopping_cart</i></a>";
                         echo "<i class=\"material-icons lighten \">add_shopping_cart</i>";
                     } else {
                         echo "<i class=\"material-icons lighten\">remove_shopping_cart</i>";
-                        echo "<a href=\"/Supershop/addtocart/id/".$entity->getAssetid()."\"><i class=\"material-icons\">add_shopping_cart</i></a>";
+                        echo "<a href=\"/Supershoppingcart/addtocart/id/".$entity->getAssetid()."\"><i class=\"material-icons\">add_shopping_cart</i></a>";
                     }
                 //echo "<i class=\"material-icons show-super-product\">queue</i>";
                 echo "</div>";
 
                 echo "<div class=\"content-container__listbox-img right-align\">";
                     if (array_key_exists($entity->getAssetid(),$cartitems)) {
-                        echo "<a href='https://github.com/digital3mpire/SUPER-INFORMATION-HIGH-MARKET/tree/master/".$entity->getLinktocontent()."'>
+                        echo "<a href='https://github.com/digital3mpire/SUPER-INFORMATION-HIGH-MARKET/tree/master/".$entity->getLinktocontent()."' target='_blank'>
                             <img src=\"".$entity->getThumbnail()."\" alt=\"name\" class=\"selected\" title=\"THE WRONG X\">
                             </a>";
                     } else {
-                        echo "<a href='https://github.com/digital3mpire/SUPER-INFORMATION-HIGH-MARKET/tree/master/".$entity->getLinktocontent()."'>
+                        echo "<a href='https://github.com/digital3mpire/SUPER-INFORMATION-HIGH-MARKET/tree/master/".$entity->getLinktocontent()."' target='_blank'>
                             <img src=\"".$entity->getThumbnail()."\" alt=\"name\" title=\"THE WRONG X\">
                             </a>";
                     }

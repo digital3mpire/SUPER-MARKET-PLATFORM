@@ -14,7 +14,7 @@ class Supershop extends CI_Controller {
 
 		parent::__construct();// you have missed this line.
 
-		$this->load->library('session');
+		//$this->load->library('session');
 		$params = [
 			// Can add unlimited number of item to cart
 			'cartMaxItem' => 0,
@@ -40,36 +40,6 @@ class Supershop extends CI_Controller {
 	}
 
 
-	public function cart()
-	{
-
-		$this->load->view('showcart',$this->data);
-	}
-
-	public function addtocart()
-	{
-
-		$get_array = $this->uri->uri_to_assoc(3);
-		$this->supercart->add($get_array['id']);
-
-
-		redirect('Supershop/listentity', 'refresh');
-
-
-	}
-
-
-	public function removefromcart()
-	{
-
-		$get_array = $this->uri->uri_to_assoc(3);
-		$this->supercart->remove($get_array['id']);
-
-
-		redirect('Supershop/listentity', 'refresh');
-
-
-	}
 
 	public function listentity()
 	{
@@ -82,7 +52,6 @@ class Supershop extends CI_Controller {
 	public function collections() {
 
 		$db = new SQLite3(APPPATH."/database/supershop_DB");
-		$sql = "SELECT * FROM superproduct_collection";
 
 		$this->data['collections'] = $db->query("SELECT * FROM superproduct_collection");
 
@@ -90,11 +59,33 @@ class Supershop extends CI_Controller {
 
 	}
 
-public function collection() {
+	public function collection() {
 
-	$this->load->view('collection',$this->data);
+		$get_array = $this->uri->uri_to_assoc(3);
+		$collectionid = $get_array['id'];
 
-}
+		$db = new SQLite3(APPPATH."/database/supershop_DB");
+		$sqlresult = $db->query("SELECT * FROM superproduct_collection WHERE id = ".$collectionid);
+
+		$sqlresultrow = $sqlresult->fetchArray();
+
+		//echo $sqlresultrow['thecollection'];
+		$sqlresultrowclean = rtrim($sqlresultrow['thecollection'], ",");
+		$artworks_of_collection = explode(",", $sqlresultrowclean);
+
+		foreach ($artworks_of_collection as $artwork) {
+			$artcollection[] = $this->superentity->getArtwork($artwork);
+		}
+
+		$this->data['artcollection_title'] = $sqlresultrow['collection_title'];
+		$this->data['artcollection_username'] = $sqlresultrow['username'];
+		$this->data['artcollection_comment'] = $sqlresultrow['comment'];
+
+		$this->data['artcollection'] = $artcollection;
+
+		$this->load->view('collection',$this->data);
+
+	}
 
 
 	public function checkout()
@@ -115,16 +106,16 @@ public function collection() {
 
 		/* validate */
 		$this->form_validation->set_rules('username', 'Username', 'required');
-		$this->form_validation->set_rules('useremail', 'Email', 'required|valid_email',
+		/*$this->form_validation->set_rules('useremail', 'Email', 'required|valid_email',
 			array('required' => 'You must provide a %s.')
-		);
+		);*/
 		$this->form_validation->set_rules('collection_title', 'Collection title', 'required');
 
 
 		if ($this->form_validation->run() == FALSE)
 		{
 
-			$formdata = $this->input->post(NULL, TRUE); // returns all POST items with XSS filter
+			$this->data['formdata'] = $this->input->post(NULL, TRUE); // returns all POST items with XSS filter
 
 			$this->load->view('checkout',$this->data);
 
@@ -132,8 +123,11 @@ public function collection() {
 
 			$formdata = $this->input->post(NULL, TRUE); // returns all POST items with XSS filter
 
-			$this->session->set_userdata($formdata);
-			$this->data['collection_id'] = $this->superentity->saveCollection($formdata, $this->supercart->getItems());
+
+			$this->load->model('Entity/Supershopcollection','Supershopcollection');
+
+
+			$this->data['collection_id'] = $this->Supershopcollection->setCollection($formdata, $this->getitemkeysfromcart());
 
 			$this->data['formdata'] = $formdata;
 			$this->load->view('checkout_success',$this->data);
@@ -142,6 +136,20 @@ public function collection() {
 
 	}
 
+
+	private function getitemkeysfromcart(){
+
+		$allitemkeys = "";
+
+		foreach ($this->supercart->getItems() as $itemkey => $itemvalue) {
+
+			$allitemkeys .= $itemkey.",";
+
+        }
+
+		return $allitemkeys;
+
+	}
 
 
 	public function create_database_X() {

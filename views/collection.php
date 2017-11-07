@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <?php $this->load->view('partials/header.php');?>
-<body>
+<body class="collection-page">
 
 <?php $this->load->view('partials/navigation.php');?>
 <h1 class="superhead">A COLLECTION</h1>
@@ -10,18 +10,30 @@
     <article>
         <div class="row">
             <div class="col s12">
-                <h3><i class="material-icons">shopping_cart</i>SUPERCART</h3>
+                <h3><i class="material-icons">shopping_cart</i>A SUPERCART COLLECTION BY <?=$artcollection_username;?></h3>
                 <p><hr></p>
                 <p>
-                    ok this is still beta. this is internet.<br>
-                    the function is not ready and working. wer are driving a continues deployment policy in this project. which means never ready.
-
+                    <?=$artcollection_username;?> commented this on hisher collection:<br>
+                    "<i><?=$artcollection_comment;?></i>"
                 </p>
-                <h6>
-                    UPDATE WILL COME SOON
-                </h6>
+                </div>
         </div>
     </article>
+</div>
+<h1 class="superhead"> <?=$artcollection_title;?></h1>
+<div class="row content-collection">
+
+    <?php
+
+    foreach($artcollection as $artwork) {
+
+        echo "<div class=\"col l4 m6 s12\"><img src=\"".$artwork->getThumbnail()."\" class=\"responsive-img\"></div>";
+
+
+    }
+    ?>
+
+
 </div>
 
 <!-- menue overlay -->

@@ -38,19 +38,27 @@ class Supershopcollection extends ArrayObject {
         if ($id != NULL) {
 
             $collection = $this->db->exec("Select * from superproduct_collection where id =".$id);
-            var_dump($collection);
 
         }
 
     }
 
 
-    public function save() {
+    public function setCollection($postdata, $supercartitems) {
 
-        $username = $this->getUsername();
-        $useremail = $this->getUseremail();
-        $comment = $this->getComment();
-        $collectiontitle = $this->getCollectionTitle();
+
+        $this->setUsername($postdata['username']);
+        $this->setUseremail("no more email required");
+        $this->setCollectionTitle($postdata['collection_title']);
+        $this->setThecollection($supercartitems);
+        $this->setComment($postdata['comment']);
+
+        return $this->saveCollection();
+
+    }
+
+
+    public function saveCollection() {
 
         $sql = "INSERT INTO superproduct_collection (
                username,
@@ -60,11 +68,11 @@ class Supershopcollection extends ArrayObject {
                thecollection,
                payedwith
                ) VALUES (
-               '".$username."',
-               '".$useremail."',
-               '".$comment."',
-               '".$collectiontitle."',
-               'the collection of things',
+               '".$this->getUsername()."',
+               'not required anymore',
+               '".$this->getComment()."',
+               '".$this->getCollectionTitle()."',
+               '".$this->getThecollection()."',
                'notpayed')
                ";
 

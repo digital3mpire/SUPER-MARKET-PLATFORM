@@ -59,72 +59,7 @@ class Superentity extends CI_Model
             } // if
         } // foreach
 
-
-
-        // is cURL installed yet?
-        /*if (!function_exists('curl_init')){
-            die('Sorry cURL is not installed!');
-        } else {
-
-            $c = curl_init();
-            curl_setopt($c, CURLOPT_RETURNTRANSFER, 1);
-            curl_setopt($c, CURLOPT_HTTPHEADER, array('Accept: application/json', 'Content-Type: application/json'));
-            curl_setopt($c, CURLOPT_URL, 'https://api.github.com/users/digital3mpire/repos');
-            curl_setopt($c, CURLOPT_USERAGENT,'digital3mpire');
-            $content = curl_exec($c);
-            //var_dump($content);
-            curl_close($c);
-            $api = json_decode($content);
-            // var_dump($api);
-
-            //print($api->open_issues_count);
-        }*/
-
-
-
     }
-
-
-
-    function curl_download($Url){
-
-        // is cURL installed yet?
-        if (!function_exists('curl_init')){
-            die('Sorry cURL is not installed!');
-        }
-
-        // OK cool - then let's create a new cURL resource handle
-        $ch = curl_init();
-
-        // Now set some options (most are optional)
-
-        // Set URL to download
-        curl_setopt($ch, CURLOPT_URL, $Url);
-
-        // Set a referer
-        curl_setopt($ch, CURLOPT_REFERER, "https://api.github.com/users/di/orgs");
-
-        // User agent
-        curl_setopt($ch, CURLOPT_USERAGENT, "MozillaXYZ/1.0");
-
-        // Include header in result? (0 = yes, 1 = no)
-        curl_setopt($ch, CURLOPT_HEADER, 0);
-
-        // Should cURL return or print out the data? (true = return, false = print)
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-
-        // Timeout in seconds
-        curl_setopt($ch, CURLOPT_TIMEOUT, 10);
-
-        // Download the given URL, and return output
-        $output = curl_exec($ch);
-
-        // Close the cURL resource, and free system resources
-        curl_close($ch);
-
-        return $output;
-    }
-
 
 
 
@@ -143,6 +78,15 @@ class Superentity extends CI_Model
     {
         $this->artworks = $artworks;
     }
+
+    /**
+     * @return array
+     */
+    public function getArtwork($assetid)
+    {
+        return $this->artworks[$assetid];
+    }
+
 
 
     /**
@@ -178,41 +122,6 @@ class Superentity extends CI_Model
     }
 
 
-    public function getAllEntities() {
-
-        return [
-            [
-                'id'=>'1',
-                'header'=>'my header 1',
-                'imgsrc'=>'00_img/1.jpg',
-                'subheadline' => 'my subheadline 1',
-                'url' => 'http://github.com/digital3mpire'
-            ],
-        [
-            'id'=>'2',
-            'header'=>'my header 2',
-            'imgsrc'=>'00_img/2.jpg',
-            'subheadline' => 'my subheadline 2',
-                'url' => 'http://github.com/digital3mpire'
-            ],
-        [
-            'id'=>'3',
-            'header'=>'my header 3',
-            'imgsrc'=>'00_img/3.jpg',
-            'subheadline' => 'my subheadline 3',
-                'url' => 'http://github.com/digital3mpire'
-            ],
-        [
-            'id'=>'4',
-            'header'=>'my header 4',
-            'imgsrc'=>'00_img/1.jpg',
-            'subheadline' => 'my subheadline 4',
-            'url' => 'http://github.com/digital3mpire'
-            ],
-
-        ];
-
-    }
 
     public function getAssetStructure() {
 
@@ -220,22 +129,6 @@ class Superentity extends CI_Model
 
     }
 
-    public function saveCollection($postdata, $supercartitems) {
-
-        $this->load->model('Entity/Supershopcollection','Supershopcollection');
-
-
-        $collection = new Supershopcollection();
-
-        $collection->setUsername($postdata['username']);
-        $collection->setUseremail($postdata['useremail']);
-        $collection->setCollectionTitle($postdata['collection_title']);
-        $collection->setThecollection('the collection');
-        $collection->setComment($postdata['comment']);
-
-        return $collection->save();
-
-    }
 
 
     private function generateAssetId($name,$artwork) {

@@ -5,8 +5,8 @@
 
 <?php $this->load->view('partials/navigation.php');?>
 <h1 class="superhead">YOUR SHOPPINGCART - </h1>
-<h2 class="superhead">THIS IS WHAT YOU GOT TO SHARE</h2>
-<div class="container content-container">
+<h2 class="superhead">THIS IS WHAT YOU GOT TO SHARE AND DOWNLOAD</h2>
+<div class="container content-container shopping-cart">
     <article>
         <div class="row">
             <div class="col s12">
@@ -24,14 +24,14 @@
                             echo "<div class=\"content-container__listbox-item\">";
                                 echo "<h5>".$entity->getArtistname()."</h5>";
                                 echo "<div class=\"content-container__listbox-subheader\">".$entity->getTitle()."</div>";
-                                echo "<div class=\"content-container__listbox-tools left-align\">";
+                                echo "<div class=\"content-container__listbox-tools right-align\">";
 
                                 if (array_key_exists($entity->getAssetid(),$cartitems)) {
-                                    echo "<a href=\"/Supershop/removefromcart/id/".$entity->getAssetid()."\"><i class=\"material-icons\">remove_shopping_cart</i></a>";
+                                    echo "<a href=\"/Supershoppingcart/removefromcart/id/".$entity->getAssetid()."\"><i class=\"material-icons\">remove_shopping_cart</i></a>";
                                     echo "<i class=\"material-icons lighten \">add_shopping_cart</i>";
                                 } else {
                                     echo "<i class=\"material-icons lighten\">remove_shopping_cart</i>";
-                                    echo "<a href=\"/Supershop/addtocart/id/".$entity->getAssetid()."\"><i class=\"material-icons\">add_shopping_cart</i></a>";
+                                    echo "<a href=\"/Supershoppingcart/addtocart/id/".$entity->getAssetid()."\"><i class=\"material-icons\">add_shopping_cart</i></a>";
                                 }
                                 echo "</div>";
                             echo "</div>";

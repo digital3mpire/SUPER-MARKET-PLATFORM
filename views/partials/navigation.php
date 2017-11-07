@@ -4,7 +4,7 @@
             <li><a href="/" class="menue-link">HOME</a></li>
             <li><a href="/Supershop/listentity" class="menue-link">Products overview</a></li>
             <li><a href="/Brands" class="menue-link">Available brands</a></li>
-            <li><a href="/Supershop/cart" class="menue-link">Your Shoppingcart</a></li>
+            <li><a href="/Supershoppingcart/showcart" class="menue-link">Your Shoppingcart</a></li>
             <li><a href="/Supershop/checkout" class="menue-link">Checkout</a></li>
             <li><a href="/Supershop/collections" class="menue-link">Collections</a></li>
             <!-- <li><a href="/Welcome/about" class="menue-link">About</a></li>-->
@@ -30,7 +30,7 @@
         </div>
         <div class="col m2 s4 right-align">
 
-            <a href="/Supershop/Cart" class="menue-link"> <i class="material-icons">shopping_cart</i></a>
+            <a href="/Supershoppingcart/showcart" class="menue-link"> <i class="material-icons">shopping_cart</i></a>
             <a href="/Supershop/Checkout" class="menue-link"> <i class="material-icons">share</i></a>
 
             <!-- menu ende -->

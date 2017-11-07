@@ -37,6 +37,7 @@
 					which are created and designed by art driven people. The created entities are commited into the global
 					git-based super structure, in the next step selected and surveyd via webinterfaces and then in a final step shared,
 					spread and distributed into the social networks and hypermedia by the people to the people.</p>
+				  	<p class="right-align"><a href="http://floriankuhlmann.com">florian kuhlmann</a><br>november 2017</p>
 				</div>
 				<div class="col m6 s12">
 					<h3>DEEEP STRUCTURE<br>
@@ -45,7 +46,7 @@
 						<li class="collection-item">
 							<h5>1. Order: Intrude by publish</h5>
 							<p>Artis commit artwork (audio, video, text, pics) to the repo on github</a>. Please be aware of the <a href="https://github.com/digital3mpire/SUPER-INFORMATION-HIGH-MARKET/tree/master/name_prename">structure</a> which is necessary to make the algorithms work to include github stuff into this frontend.
-								<br>Possibilites are: pull request, or please contact <a href="http://twitter.com/fkuhlmann">me for getting access to repo</p>
+								<br>Possibilites are: pull request, or please contact <a href="http://twitter.com/fkuhlmann">me</a> for getting access to repo</p>
 						</li>
 						<li class="collection-item">
 							<h5>2. Order: Escalate</h5>

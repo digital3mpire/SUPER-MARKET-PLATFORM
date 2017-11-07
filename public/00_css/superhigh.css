@@ -74,6 +74,10 @@ a {
 	border-radius: 0 0 10px 10px;
 }
 
+.collection-page .content-container {
+	border-radius: 0;
+}
+
 .content-container article {
 	margin: 1rem;
 	padding-top: 3rem;
@@ -96,6 +100,12 @@ text-decoration: underline;
 	background-color: white;
 	height:2rem;
 	border-bottom: 1px #EEEEEE solid;
+}
+
+.shopping-cart .content-container__listbox-tools {
+	background-color: transparent;
+	height:2rem;
+	border-top: 1px #000 solid;
 }
 
 .content-container__listbox .lighten,
@@ -139,6 +149,11 @@ text-decoration: underline;
 	margin:0;
 }
 
+.row.content-collection {
+
+	margin-bottom: 0;
+
+}
 
 /* content overlay */
 
@@ -195,6 +210,11 @@ text-decoration: underline;
 	font-size: 18px;
 	border-radius: 10px 10px 10px 10px;
 	padding-bottom: 1rem;
+}
+
+.collection-page .footer-container {
+	margin-top: 1rem;
+	border-radius: 0px 0px 10px 10px;
 }
 
 .footer {
