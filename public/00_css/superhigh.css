@@ -7,6 +7,10 @@ body {
 	background-attachment: fixed;
 }
 
+body.collection-page {
+	background: url(../00_pics/freeport_1.jpg);
+}
+
 
 
 h1 {
@@ -19,6 +23,11 @@ h2 {
 	font-family: 'Bangers', cursive;
 	text-shadow: 0 0 0.1em #fff, 0 0 0.2em #fff, 0 0 0.3em #80ff8e, 0 0 0.4em #eeff33,0 0 0.6em #39ff44, 0 0 0.8em #f5f, 0 0 1.0em #f5f, 0 0 1.2em #f5f;
 	/*text-align: center;*/
+}
+
+h1.headline-collection {
+	text-shadow: 0 0 0.1em #fff, 0 0 0.2em #fff22e, 0 0 0.3em #ff1510, 0 0 0.4em #eeff33,0 0 0.6em #ffaa33, 0 0 0.8em #f5f, 0 0 1.0em #f5f, 0 0 1.2em #f5f;
+
 }
 
 h3,h4,h5,h6 {

@@ -20,14 +20,18 @@
         </div>
     </article>
 </div>
-<h1 class="superhead"> <?=$artcollection_title;?></h1>
+<h1 class="superhead headline-collection"> <?=$artcollection_title;?></h1>
 <div class="row content-collection">
 
     <?php
 
     foreach($artcollection as $artwork) {
 
-        echo "<div class=\"col l4 m6 s12\"><img src=\"".$artwork->getThumbnail()."\" class=\"responsive-img\"></div>";
+        echo "<div class=\"col l4 m6 s12\">";
+        echo "<a href='https://github.com/digital3mpire/SUPER-INFORMATION-HIGH-MARKET/tree/master/".$artwork->getLinktocontent()."' target='_blank'>";
+        echo "<img src=\"".$artwork->getThumbnail()."\" class=\"responsive-img\">";
+        echo "</a>";
+        echo "</div>";
 
 
     }
