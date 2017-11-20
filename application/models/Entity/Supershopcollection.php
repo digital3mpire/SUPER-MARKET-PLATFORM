@@ -59,7 +59,7 @@ class Supershopcollection extends ArrayObject
         $this->setComment($postdata['comment']);
         $this->setSlug($postdata['username']."-".$postdata['collection_title']);
 
-        echo $sql = "SELECT * FROM 'superproduct_collection' WHERE username = '" . $postdata['username'] . "' AND collection_title = '" . $postdata['collection_title']."'";
+        $sql = "SELECT * FROM 'superproduct_collection' WHERE username = '" . $postdata['username'] . "' AND collection_title = '" . $postdata['collection_title']."'";
         $results = $this->db->query($sql);
 
 
