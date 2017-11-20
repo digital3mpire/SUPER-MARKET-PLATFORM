@@ -44,7 +44,7 @@
 				echo " 		<span class=\"card-title\">'".$collectionrow['collection_title']."'</span>";
 				echo "	</div>";
 				echo "	<div class=\"card-content\">by ".$collectionrow['username']."</div>";
-				echo "	<div class=\"card-action\"><a href=\"/Supershop/collection/id/".$collectionrow['id']."\">go to collection</a></div>";
+				echo "	<div class=\"card-action\"><a href=\"/Supershop/collection/id/".$collectionrow['theslug']."\">go to collection</a></div>";
 				echo "</div>";
 				echo "</div>";
 

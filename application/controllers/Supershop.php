@@ -84,13 +84,13 @@ class Supershop extends CI_Controller {
 		$collectionid = $get_array['id'];
 
 		$db = new SQLite3(APPPATH."/database/supershop_DB");
-		echo $sql = "SELECT * FROM superproduct_collection WHERE theslug = '".$collectionid."'";
+		$sql = "SELECT * FROM superproduct_collection WHERE theslug = '".$collectionid."'";
 		$sqlresult = $db->query($sql);
 
 		$sqlresultrow = $sqlresult->fetchArray();
 
 		//echo $sqlresultrow['thecollection'];
-		echo $sqlresultrowclean = rtrim($sqlresultrow['thecollection'], ",");
+		$sqlresultrowclean = rtrim($sqlresultrow['thecollection'], ",");
 
 		if (!empty($sqlresultrowclean)) {
 
