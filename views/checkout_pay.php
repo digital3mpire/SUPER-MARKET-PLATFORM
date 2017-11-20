@@ -2,7 +2,7 @@
 <html lang="en" xmlns="http://www.w3.org/1999/html">
 <?php $this->load->view('partials/header.php');?>
 
-<body>
+<body class="checkout">
 <div id="fb-root"></div>
 <script></script>
 

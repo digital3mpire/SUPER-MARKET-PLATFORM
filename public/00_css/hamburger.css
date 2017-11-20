@@ -28,6 +28,46 @@
   background: #FFF;
 }
 
+.row.nav-container-collection .col {
+  padding:2rem 1rem 1rem 0rem;
+}
+
+.row.nav-container-collection .button_container {
+  height: 54px;
+  width:  54px;
+}
+
+.row.nav-container-collection .button_container span{
+  height: 8px;
+}
+
+.row.nav-container-collection .button_container span:nth-of-type(2) {
+  top: 20px;
+}
+.row.nav-container-collection .button_container span:nth-of-type(3) {
+  top: 40px;
+}
+
+.row.nav-container-collection .button_container.active .top,
+.row.nav-container-collection .button_container.active .middle,
+.row.nav-container-collection .button_container.active .bottom,
+.row.nav-container-collection .button_container span{
+  background-color: #fff;
+}
+
+
+.row.nav-container-collection .button_container.active .top {
+  -webkit-transform: translateY(28px) translateX(0) rotate(45deg);
+  transform: translateY(28px) translateX(0) rotate(45deg);
+}
+
+.row.nav-container-collection .button_container.active .bottom {
+  -webkit-transform: translateY(-11px) translateX(0) rotate(-45deg);
+  transform: translateY(-11px) translateX(0) rotate(-45deg);
+}
+
+
+
 .button_container.active {
   z-index: 15;
 }
@@ -96,29 +136,36 @@
   top: 45%;
   -webkit-transform: translateY(-50%);
           transform: translateY(-50%);
-  font-size: 30px;
+
   font-family: 'Bangers', cursive;
   font-weight: 400;
   text-align: center;
 }
 
+.overlay nav ul li a {
+
+  font-size: 40px;
+
+}
+
+
 /* Larger than tablet (also point when grid becomes active) */
-@media (min-width: 550px) {
-   .overlay nav {
+@media (min-width: 480px) and (max-width: 800px) {
+   .overlay nav ul li a {
   
     font-size: 40px;
   
   }
 }
 
-/* Larger than tablet */
+/* Larger than tablet
 @media (min-width: 1024px) {
    .overlay nav {
   
-    font-size: 50px;
+    font-size: 1rem;
   
   }
-}
+}*/
 
 .overlay ul {
   list-style: none;
@@ -142,28 +189,27 @@
 
 .overlay nav ul li a {
 
-  font-size: 3rem;
+  /*font-size: 3rem;*/
   padding-bottom: 0.25rem;
 
 }
 
 /* Larger than tablet */
-@media (min-width: 640px) {
+@media (min-width: 800px) {
    .overlay ul li {
 
-    padding-bottom: 1.5rem;
-    min-height: 30px;
-    position: relative;
-    opacity: 0;
-
-     padding-left: 20%;
-     padding-right: 20%;
+      padding-bottom: 0.5rem;
+      min-height: 1.5rem;
+      position: relative;
+      opacity: 0;
+      padding-left: 20%;
+      padding-right: 20%;
 
   }
 
   .overlay nav ul li a {
 
-    font-size: 5rem;
+    font-size: 50px;
   }
 
 

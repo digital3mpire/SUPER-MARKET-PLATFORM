@@ -34,9 +34,28 @@ class Supershop extends CI_Controller {
 	}
 
 
+	public function testapi() {
+
+		$this->load->helper('file');
+		$this->superentity->loadfromfile(directory_map(BASEPATH . '../public/assets/SUPER-INFORMATION-HIGH-MARKET'));
+
+		//$json = $this->superentity->loadgithub();
+		//var_dump(json_decode($json));
+	}
+
+
+
 	public function index()
 	{
-		$this->load->view('index');
+
+		$db = new SQLite3(APPPATH."/database/supershop_DB");
+
+		$this->data['collections'] = $db->query("SELECT * FROM superproduct_collection ORDER BY `id` DESC LIMIT 6");
+
+		//var_dump($this->data['allentities']);
+
+
+		$this->load->view('index',$this->data);
 	}
 
 
@@ -65,25 +84,49 @@ class Supershop extends CI_Controller {
 		$collectionid = $get_array['id'];
 
 		$db = new SQLite3(APPPATH."/database/supershop_DB");
-		$sqlresult = $db->query("SELECT * FROM superproduct_collection WHERE id = ".$collectionid);
+		echo $sql = "SELECT * FROM superproduct_collection WHERE theslug = '".$collectionid."'";
+		$sqlresult = $db->query($sql);
 
 		$sqlresultrow = $sqlresult->fetchArray();
 
 		//echo $sqlresultrow['thecollection'];
-		$sqlresultrowclean = rtrim($sqlresultrow['thecollection'], ",");
-		$artworks_of_collection = explode(",", $sqlresultrowclean);
+		echo $sqlresultrowclean = rtrim($sqlresultrow['thecollection'], ",");
 
-		foreach ($artworks_of_collection as $artwork) {
-			$artcollection[] = $this->superentity->getArtwork($artwork);
-		}
+		if (!empty($sqlresultrowclean)) {
 
-		$this->data['artcollection_title'] = $sqlresultrow['collection_title'];
-		$this->data['artcollection_username'] = $sqlresultrow['username'];
-		$this->data['artcollection_comment'] = $sqlresultrow['comment'];
+			$artworks_of_collection = explode(",", $sqlresultrowclean);
 
-		$this->data['artcollection'] = $artcollection;
 
-		$this->load->view('collection',$this->data);
+			foreach ($artworks_of_collection as $artwork) {
+				$artcollection[] = $this->superentity->getArtwork($artwork);
+			}
+
+			$this->data['artcollection_title'] = $sqlresultrow['collection_title'];
+			$this->data['artcollection_username'] = $sqlresultrow['username'];
+			$this->data['artcollection_comment'] = $sqlresultrow['comment'];
+
+			$this->data['artcollection'] = $artcollection;
+
+			$this->load->library('Mediacode',  $artcollection);
+
+			$this->data['artcollectionwidgets'] = $this->mediacode->getArtworkwidgets();
+			$this->load->view('collection',$this->data);
+
+		} else {
+
+			$this->load->view('collection',$this->data);
+
+		};
+
+
+	}
+
+	public function narrative()
+	{
+
+
+
+		$this->load->view('narrative',$this->data);
 
 	}
 
@@ -130,6 +173,8 @@ class Supershop extends CI_Controller {
 			$this->data['collection_id'] = $this->Supershopcollection->setCollection($formdata, $this->getitemkeysfromcart());
 
 			$this->data['formdata'] = $formdata;
+
+			$this->supercart->destroy();
 			$this->load->view('checkout_success',$this->data);
 
 		}
@@ -150,27 +195,5 @@ class Supershop extends CI_Controller {
 		return $allitemkeys;
 
 	}
-
-
-	public function create_database_X() {
-
-		$this->db = new SQLite3(APPPATH."/database/supershop_DB");
-
-		$this->db-> exec("CREATE TABLE IF NOT EXISTS superproduct_collection(
-                        id INTEGER PRIMARY KEY AUTOINCREMENT,
-                        collection_title TEXT NOT NULL DEFAULT '0',
-                        username TEXT NOT NULL DEFAULT '0',
-                        useremail TEXT NOT NULL DEFAULT '0',
-                        comment TEXT NULL DEFAULT '0',
-                        thecollection TEXT NULL DEFAULT '0',
-                        payedwith TEXT NOT NULL DEFAULT '0'
-                        )");
-
-
-	}
-
-
-
-
 
 }

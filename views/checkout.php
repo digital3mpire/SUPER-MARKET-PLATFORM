@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/html">
 <?php $this->load->view('partials/header.php');?>
-<body>
+<body class="checkout">
 
 <?php $this->load->view('partials/navigation.php');?>
 <h1 class="superhead">CHECKOUT</h1>
@@ -13,7 +13,7 @@
             <div class="col s12">
                 <h3><i class="material-icons">share</i> Supercheckout and Share</h3>
                 <p><hr></p>
-                <p>this is the checkout. here you can pay your superproduct collcetion with a share on social and antisocial medias</p>
+                <p>this is the checkout. here you can finalize and save your curated shopping cart for sharing.</p>
 
             </div>
 
@@ -25,7 +25,7 @@
                         foreach ($cartitems as $itemkey => $itemvalue) {
 
                             $entity = $allentities[$itemkey];
-                            echo $itemkey;
+                            //echo $itemkey;
                             echo $entity->getArtistname()." <i>'".$entity->getTitle()."'</i>, ";
 
                         }
@@ -51,6 +51,10 @@
                 <div class="col input-field s8">
                     <input type="text" name="username" value="<?php echo set_value('username'); ?>" size="50" class="form-input"/>
                     <label for="username">Whats your name?</label>
+                </div>
+                <div class="col input-field s8">
+                    <input type="text" name="webpage" value="<?php echo set_value('webpage'); ?>" size="50" class="form-input"/>
+                    <label for="webpage">Do you have a webpage we could link to?</label>
                 </div>
                 <div class="col input-field s8">
                         <textarea name="comment" cols="40" rows="10"  class="materialize-textarea form-input"/><?php echo set_value('collection_title'); ?></textarea>

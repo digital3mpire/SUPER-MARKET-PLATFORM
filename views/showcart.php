@@ -6,7 +6,7 @@
 <?php $this->load->view('partials/navigation.php');?>
 <h1 class="superhead">YOUR SHOPPINGCART - </h1>
 <h2 class="superhead">THIS IS WHAT YOU GOT TO SHARE AND DOWNLOAD</h2>
-<div class="container content-container shopping-cart">
+<div class="container content-container shopping-cart z-depth-3">
     <article>
         <div class="row">
             <div class="col s12">

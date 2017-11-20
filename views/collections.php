@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <?php $this->load->view('partials/header.php');?>
-<body>
+<body class="collections-page">
 
 <?php $this->load->view('partials/navigation.php');?>
 <h1 class="superhead">THE COLLECTIONS</h1>
-<h2 class="superhead">SUPERSSTUF COLLECTED IN A SHOPPING CART</h2>
-<div class="container content-container">
+<h2 class="superhead">SUPERB STUFF CURATED IN A SHOPPING CART</h2>
+<div class="container content-container z-depth-3">
     <article>
         <div class="row">
             <div class="col s12">
@@ -16,21 +16,22 @@
             </div>
         </div>
         <div class="row">
-            <div class="col m8 s12">
-                <p>
+
                     <?php
 
                     while ($collectionrow = $collections->fetchArray()) {
-                        echo "<a href='/Supershop/collection/id/".$collectionrow['id']."'>
+
+                        echo "<div class=\"col m3 s12\"><p>";
+                        echo "<a href='/Supershop/collection/id/".$collectionrow['theslug']."'>
                         <h3>'".$collectionrow['collection_title']."'</h3></a>";
                         echo "<h5>selected by ".$collectionrow['username']."</h5>";
-                        echo "<p>".$collectionrow['comment']."</p>";
+                        //echo $collectionrow['thecollection'];
+                        echo "</p></div>";
                     }
 
 
                     ?>
-                </p>
-            </div>
+
 
         </div>
 

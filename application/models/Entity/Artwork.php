@@ -27,12 +27,48 @@ class Artwork extends ArrayObject
 
     private $pathtoartwork;
 
+    private $files = array();
+
+    private $mediatype;
+
 
     public function __construct()
     {
         parent::__construct();
         // Your own constructor code
     }
+
+     /*** @return mixed
+      */
+    public function getFiles()
+    {
+        return $this->files;
+    }
+
+    /**
+     * @param mixed $files
+     */
+    public function setFiles($files)
+    {
+        $this->files = $files;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getMediatype()
+    {
+        return $this->mediatype;
+    }
+
+    /**
+     * @param mixed $mediatype
+     */
+    public function setMediatype($mediatype)
+    {
+        $this->mediatype = $mediatype;
+    }
+
 
     /**
      * @return mixed

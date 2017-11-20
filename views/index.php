@@ -1,47 +1,97 @@
 <!DOCTYPE html>
 <html lang="en">
 	<?php $this->load->view('partials/header.php');?>
-	<body>
+	<body class="home">
 
 	<?php $this->load->view('partials/navigation.php');?>
 	<h1 class="superhead">SUPER-INFORMATION-HIGH-MARKET</h1>
-	<h2 class="superhead">Art as an open source product</h2>
-	<div class="container content-container">
+	<h3 class="superhead">A MARKET AFTER THE MARKET ON STEROIDS</h3>
+
+	<div class="fullsize-box">
+		<div class="row">
+			<div class="col s12">
+				<h4 class="flow-text">Shopping as an act of curation.
+					<br>Curation as an act of the accumulation of social capital.</h4>
+
+				<h4 class="flow-text">SUPER-INFORMATION-HIGH-MARKET is a pavillon structured like an online shop and its up to you, the audience, to <a href="/Supershop/listentity" class="menue-link">select the products aka artworks</a> from the favorit art brands.
+					The idea behind is quite simple. If you go shopping your cart is always a well thought collection of highly wanted things. You curate your cart.<br>
+					</h4>
+					<h4 class="flow-text">In this special case your shoppingcart will be saved after checkout as personal selection of finest netart.
+					<a href="/Supershop/collections" class="menue-link">Shoppingcart-collections</a> are available to other users.</h4>
+
+			</div>
+		</div>
+	</div>
+	<h3 class="superhead">THE LATEST COLLECTIONS</h3>
+
+	<div class="latest-collection-box">
+		<article>
+		<div class="row">
+			<div class="col s12">
+			</div>
+
+			<?php
+
+			while ($collectionrow = $collections->fetchArray()) {
+
+				echo "<div class=\"col m2 s12\">";
+				$collection = explode(",",rtrim($collectionrow['thecollection'],","));
+				$randomartworkformcollection = $allentities[$collection[rand(0,count($collection)-1)]];
+				echo "<div class=\"card\">
+            			<div class=\"card-image\">";
+				echo "		<img src=\"".$randomartworkformcollection->getThumbnail()."\" class=\"responsive-img materialboxed\">";
+
+				echo " 		<span class=\"card-title\">'".$collectionrow['collection_title']."'</span>";
+				echo "	</div>";
+				echo "	<div class=\"card-content\">by ".$collectionrow['username']."</div>";
+				echo "	<div class=\"card-action\"><a href=\"/Supershop/collection/id/".$collectionrow['id']."\">go to collection</a></div>";
+				echo "</div>";
+				echo "</div>";
+
+			}
+
+
+			?>
+
+		</div>
+			</article>
+		</div>
+	<h3 class="superhead">DEEP STRUCTURE HOWTO - THIS IS HOW IT WORKS</h3>
+		<div class="container content-container z-depth-3">
 		<article>
 			<div class="row">
+				<div class="col s10">
+				<h3></h3>
+					</div>
+		      	<div class="col m6 s12">
 
-		      <div class="col m6 s12">
-				  <h3>A Pavillon for the</h3>
-				  <a href="http://thewrong.org/Super-Information-High-Market"><img class="responsive-img" src="<?php echo base_url('00_pics/TW2_logo.png'); ?>"></a>
-		      	<h3>NARRATIVE</h3>
+					<h5>How this works for the audience</h5>
+					<ul class="collection">
+						<li class="collection-item">
+							<h5>1. Order: Watch and select</h5>
+							<p>Browse to the inventory at <a href="/Supershop/listentity" class="menue-link">Products overview</a>.
+								If necesary jump to the github sources to get a better idea of the piece.<br>
+								Discover, enjoy and if you are interested just download the repo.</p>
+						</li>
+						<li class="collection-item">
+							<h5>2. Order: Super Power Publishing</h5>
+							<p>If you like stuff put it in your shopping cart and save your collection for later sharing by checkout.</p>
+						</li>
+						<li class="collection-item">
+							<h5>3. Curate your own show with your shopping cart</h5>
+							<p>Go to checkout and save it as your collection. It will be available to other under collections</p>
+						</li>
+						<li class="collection-item">
+							<h5>4. Order: Spread and share</h5>
+							<p>Share your collection on the internet.</p>
+						</li>
+					</ul>
 
-					<p>The superinformation high market is the market in its maximum and final stage.
-					It is an economy in total and constant flux that has merged with life into a new form of
-					reality based on an intense information stream powered by the endless sources of energy
-					drilled from deep within the earth’s core. In the superinfromation high market everything is connected,
-					because everything is one. It is the last product of a globalized hypercapitalistic technomachine and
-					the result of the final massive bailout which was necessary when the last remaining supercompany collapsed.</p>
-
-					<p>In the upcoming age of the super information high market virtual, augmented reality and meta physical
-					reality will be merged into a higher surrogate of consciousness. Stimulated by the last forces of capital,
-					boosted by internet technology in combination with the deep understanding and usage of morphogenetic fields,
-					the world was transformed into a surreal state of permanent dreamtime, where being continously oscillates
-					between TRUE and FALSE. This form of beeing is deeply stablizing and reassuring yet also highly arrousing
-					and stimulating at the same time.</p>
-
-					<p>Materiliazition ended when the flux of the information super high market started streaming,
-					the mindset of mankind changed and with this step in evolution the world transformed into pure information.
-					In these new situations the mode of production and accumulation disappeared. These processes where
-					replaced by the concept of commiting and spreading. Market set, industrially fabricated serialized
-					products lost there values and have been replaced by undefined lossfree reproducible entities
-					which are created and designed by art driven people. The created entities are commited into the global
-					git-based super structure, in the next step selected and surveyd via webinterfaces and then in a final step shared,
-					spread and distributed into the social networks and hypermedia by the people to the people.</p>
-				  	<p class="right-align"><a href="http://floriankuhlmann.com">florian kuhlmann</a><br>november 2017</p>
-				</div>
+			  </div>
 				<div class="col m6 s12">
-					<h3>DEEEP STRUCTURE<br>
-					- How this works for producers</h3>
+
+					<h5>
+						How this works for producers</h5>
 					<ul class="collection">
 						<li class="collection-item">
 							<h5>1. Order: Intrude by publish</h5>
@@ -57,22 +107,10 @@
 							<p>Artwork will be <a href="/Supershop/listentity">available under product lists</a> and part of THE WRONG now</p>
 						</li>
 					</ul>
-						<h3>How this works for the audience</h3>
-					<ul class="collection">
-						<li class="collection-item">
-							<h5>1. Order: Wathc and select</h5>
-							<p>Browse to the inventory. Jump to the github sources. Discover, enjoy and if you are interested just download the repo.</p>
-						</li>
-						<li class="collection-item">
-							<h5>2. Order: Super Power Publishing</h5>
-							<p>If you like stuff put it in your shopping cart and save your collection for later sharing by checkout.</p>
-						</li>
-						<li class="collection-item">
-							<h5>3. Order: Spread and share</h5>
-							<p>Share your collection on the internet and give your personal selection of the artworks some more clicks.</p>
-						</li>
-					</ul>
       			</div>
+
+
+
     		</div>
 		</article>
 	</div>

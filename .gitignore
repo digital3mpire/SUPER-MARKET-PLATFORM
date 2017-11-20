@@ -3,6 +3,7 @@
 /config/config.php
 
 application/database/supershop_DB
+application/controllers/ControllZ.php
 
 application/cache/*
 !application/cache/index.html

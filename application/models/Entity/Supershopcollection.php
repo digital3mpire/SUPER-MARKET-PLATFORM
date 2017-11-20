@@ -10,7 +10,8 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 
-class Supershopcollection extends ArrayObject {
+class Supershopcollection extends ArrayObject
+{
 
     private $db;
 
@@ -18,13 +19,16 @@ class Supershopcollection extends ArrayObject {
 
     private $username;
 
-    private $useremail;
+    private $webpage;
 
     private $collection_title;
 
     private $comment;
 
     private $thecollection;
+
+    private $slug;
+
 
     /**
      * Supershopcollection constructor.
@@ -33,54 +37,122 @@ class Supershopcollection extends ArrayObject {
     public function __construct($id = null)
     {
 
-        $this->db = new SQLite3(APPPATH."/database/supershop_DB");
+        $this->db = new SQLite3(APPPATH . "/database/supershop_DB");
 
         if ($id != NULL) {
 
-            $collection = $this->db->exec("Select * from superproduct_collection where id =".$id);
+            $collection = $this->db->exec("Select * from superproduct_collection where id =" . $id);
 
         }
 
     }
 
 
-    public function setCollection($postdata, $supercartitems) {
+    public function setCollection($postdata, $supercartitems)
+    {
 
 
         $this->setUsername($postdata['username']);
-        $this->setUseremail("no more email required");
+        $this->setWebpage($postdata['webpage']);
         $this->setCollectionTitle($postdata['collection_title']);
         $this->setThecollection($supercartitems);
         $this->setComment($postdata['comment']);
+        $this->setSlug($postdata['username']."-".$postdata['collection_title']);
 
-        return $this->saveCollection();
+        echo $sql = "SELECT * FROM 'superproduct_collection' WHERE username = '" . $postdata['username'] . "' AND collection_title = '" . $postdata['collection_title']."'";
+        $results = $this->db->query($sql);
+
+
+        if ($results != false) {
+
+            $row = $results->fetchArray();
+
+            //var_dump($row);
+            //echo "numcolumns".$results->numColumns()." ende";
+
+            if ($row == false) {
+
+                $id = $this->saveCollection();
+
+            } else {
+
+                $this->updateCollection($row['id']);
+                $id = $row['id'];
+
+            }
+
+        }
+
+
+
+
+        return $this->getSlug();
 
     }
 
 
-    public function saveCollection() {
+    public function saveCollection()
+    {
 
         $sql = "INSERT INTO superproduct_collection (
                username,
-               useremail,
+               webpage,
                comment,
                collection_title,
                thecollection,
-               payedwith
+               theslug
                ) VALUES (
-               '".$this->getUsername()."',
-               'not required anymore',
-               '".$this->getComment()."',
-               '".$this->getCollectionTitle()."',
-               '".$this->getThecollection()."',
-               'notpayed')
+               '" . $this->getUsername() . "',
+               '" . $this->getWebpage() . "',
+               '" . $this->getComment() . "',
+               '" . $this->getCollectionTitle() . "',
+               '" . $this->getThecollection() . "',
+               '" . $this->getSlug() . "')
                ";
 
-       $this->db->exec($sql);
-       return $this->db->lastInsertRowid();
+        $this->db->exec($sql);
+        return $this->db->lastInsertRowid();
 
     }
 
+
+    private function updateCollection($id)
+    {
+
+        echo $sql = "UPDATE superproduct_collection SET
+                    username = " . $this->getUsername() . ",
+                    webpage = " . $this->getWebpage() . ",
+                    comment = " . $this->getComment() . ",
+                    collection_title = " . $this->getCollectionTitle() . ",
+                    thecollection = \"" . $this->getThecollection() . "\",
+                    theslug = " . $this->getSlug() . "
+                    WHERE id = " . $id;
+
+
+        $queryresult = $this->db->exec($sql);
+        if ($queryresult) {
+            //echo 'Anzahl der modifizierten Reihen: ', $this->db->changes();
+        }
+
+
+    }
+
+
+    /**
+     * @return mixed
+     */
+    public function getSlug()
+    {
+        return $this->slug;
+    }
+
+    /**
+     * @param mixed $slug
+     */
+    public function setSlug($slugstring)
+    {
+        $this->slug = $this->slugit($slugstring);
+    }
 
     /**
      * @return mixed
@@ -149,17 +221,17 @@ class Supershopcollection extends ArrayObject {
     /**
      * @return mixed
      */
-    public function getUseremail()
+    public function getWebpage()
     {
-        return $this->useremail;
+        return $this->webpage;
     }
 
     /**
-     * @param mixed $useremail
+     * @param mixed $webpage
      */
-    public function setUseremail($useremail)
+    public function setWebpage($webpage)
     {
-        $this->useremail = $useremail;
+        $this->webpage = $webpage;
     }
 
     /**
@@ -178,5 +250,18 @@ class Supershopcollection extends ArrayObject {
         $this->username = $username;
     }
 
+
+    public function slugit($str, $replace = array(), $delimiter = '-')
+    {
+        if (!empty($replace)) {
+            $str = str_replace((array)$replace, ' ', $str);
+        }
+        $clean = iconv('UTF-8', 'ASCII//TRANSLIT', $str);
+        $clean = preg_replace("/[^a-zA-Z0-9\/_|+ -]/", '', $clean);
+        $clean = strtolower(trim($clean, '-'));
+        $clean = preg_replace("/[\/_|+ -]+/", $delimiter, $clean);
+        return $clean;
+
+    }
 
 }
