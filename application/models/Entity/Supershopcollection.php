@@ -124,8 +124,8 @@ class Supershopcollection extends ArrayObject
                     webpage = '" . $this->getWebpage() . "',
                     comment = '" . $this->getComment() . "',
                     collection_title = '" . $this->getCollectionTitle() . "',
-                    thecollection = \"'" . $this->getThecollection() . "'\",
-                    theslug = '" . $this->getSlug() . "''
+                    thecollection = '" . $this->getThecollection() . "',
+                    theslug = '" . $this->getSlug() . "'
                     WHERE id = " . $id;
 
 
