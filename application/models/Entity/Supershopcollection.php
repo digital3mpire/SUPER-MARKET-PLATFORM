@@ -119,7 +119,7 @@ class Supershopcollection extends ArrayObject
     private function updateCollection($id)
     {
 
-        echo $sql = "UPDATE superproduct_collection SET
+        $sql = "UPDATE superproduct_collection SET
                     username = '" . $this->getUsername() . "',
                     webpage = '" . $this->getWebpage() . "',
                     comment = '" . $this->getComment() . "',
