@@ -120,12 +120,12 @@ class Supershopcollection extends ArrayObject
     {
 
         echo $sql = "UPDATE superproduct_collection SET
-                    username = " . $this->getUsername() . ",
-                    webpage = " . $this->getWebpage() . ",
-                    comment = " . $this->getComment() . ",
-                    collection_title = " . $this->getCollectionTitle() . ",
-                    thecollection = \"" . $this->getThecollection() . "\",
-                    theslug = " . $this->getSlug() . "
+                    username = ''" . $this->getUsername() . "',
+                    webpage = '" . $this->getWebpage() . "',
+                    comment = '" . $this->getComment() . "',
+                    collection_title = '" . $this->getCollectionTitle() . "',
+                    thecollection = \"'" . $this->getThecollection() . "'\",
+                    theslug = '" . $this->getSlug() . "''
                     WHERE id = " . $id;
 
 
